@@ -1,10 +1,12 @@
 import React, { createContext, useState, useContext, ReactNode } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useNotification } from './NotificationContext';
 
 type User = {
   id: string;
   email: string;
   name?: string;
+  avatar?: string;
 };
 
 type AuthContextType = {
@@ -31,6 +33,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [user, setUser] = useState<User | null>(null);
   const [authError, setAuthError] = useState<string | null>(null);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { showNotification } = useNotification();
 
   const login = async (email: string, password: string) => {
     try {
@@ -44,17 +48,29 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         throw new Error("Bro... Wrong password. Wanna try again or cry? 😢");
       }
       
-      setUser({
+      const newUser = {
         id: '1',
         email,
-        name: email.split('@')[0]
-      });
+        name: email.split('@')[0],
+        avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg'
+      };
+      
+      setUser(newUser);
       setAuthError(null);
+      showNotification('Successfully logged in! 🎉', 'success');
+      
+      // Navigate back to the previous page or home
+      if (location.pathname === '/profile') {
+        navigate('/');
+      }
+      
     } catch (error) {
       if (error instanceof Error) {
         setAuthError(error.message);
+        showNotification(error.message, 'error');
       } else {
         setAuthError("Login failed. The vibes were off... Try again? 👀");
+        showNotification("Login failed. The vibes were off... Try again? 👀", 'error');
       }
       throw error;
     }
@@ -72,17 +88,29 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         throw new Error("Weak password energy! Make it 6+ characters! 💪");
       }
       
-      setUser({
+      const newUser = {
         id: '1',
         email,
-        name: name || email.split('@')[0]
-      });
+        name: name || email.split('@')[0],
+        avatar: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg'
+      };
+      
+      setUser(newUser);
       setAuthError(null);
+      showNotification('Welcome to the squad! 🎉', 'success');
+      
+      // Navigate back to the previous page or home
+      if (location.pathname === '/profile') {
+        navigate('/');
+      }
+      
     } catch (error) {
       if (error instanceof Error) {
         setAuthError(error.message);
+        showNotification(error.message, 'error');
       } else {
         setAuthError("Signup glitched out. Not the vibe we wanted... 😬");
+        showNotification("Signup glitched out. Not the vibe we wanted... 😬", 'error');
       }
       throw error;
     }
@@ -90,6 +118,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const logout = () => {
     setUser(null);
+    showNotification('Successfully logged out! Come back soon! 👋', 'success');
+    navigate('/');
   };
 
   const clearAuthError = () => {

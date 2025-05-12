@@ -7,22 +7,25 @@ import { CartProvider } from './contexts/CartContext';
 import { CheckoutProvider } from './contexts/CheckoutContext';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { WishlistProvider } from './contexts/WishlistContext';
+import { NotificationProvider } from './contexts/NotificationContext';
 import { BrowserRouter } from 'react-router-dom';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <ThemeProvider>
-        <AuthProvider>
-          <CartProvider>
-            <WishlistProvider>
-              <CheckoutProvider>
-                <App />
-              </CheckoutProvider>
-            </WishlistProvider>
-          </CartProvider>
-        </AuthProvider>
-      </ThemeProvider>
+      <NotificationProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <CartProvider>
+              <WishlistProvider>
+                <CheckoutProvider>
+                  <App />
+                </CheckoutProvider>
+              </WishlistProvider>
+            </CartProvider>
+          </AuthProvider>
+        </ThemeProvider>
+      </NotificationProvider>
     </BrowserRouter>
   </StrictMode>
 );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { LogOut, User, Heart, ShoppingBag } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
+import { Link } from 'react-router-dom';
 
 interface UserMenuProps {
   onClose: () => void;
@@ -33,20 +34,32 @@ const UserMenu: React.FC<UserMenuProps> = ({ onClose }) => {
             <p className="text-xs text-gray-500 truncate">{user?.email}</p>
           </div>
           
-          <a href="#" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+          <Link 
+            to="/profile" 
+            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            onClick={onClose}
+          >
             <User size={16} className="mr-3" />
             <span>My Profile</span>
-          </a>
+          </Link>
           
-          <a href="#" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+          <Link 
+            to="/profile" 
+            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            onClick={onClose}
+          >
             <ShoppingBag size={16} className="mr-3" />
             <span>My Orders</span>
-          </a>
+          </Link>
           
-          <a href="#" className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+          <Link 
+            to="/wishlist" 
+            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            onClick={onClose}
+          >
             <Heart size={16} className="mr-3" />
             <span>Wishlist</span>
-          </a>
+          </Link>
           
           <button 
             onClick={() => {
