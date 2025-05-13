@@ -4,13 +4,16 @@
     opacity: 0;
     transform: scale(0.8) translateY(20px);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.03) translateY(-8px);
   }
+
   80% {
     transform: scale(0.97) translateY(3px);
   }
+
   100% {
     transform: scale(1) translateY(0);
   }
@@ -24,6 +27,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -38,6 +42,7 @@
     transform: translateX(100%);
     opacity: 0;
   }
+
   to {
     transform: translateX(0);
     opacity: 1;
@@ -49,9 +54,26 @@
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-  20%, 40%, 60%, 80% { transform: translateX(5px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
 }
 
 .animate-shake {
@@ -64,6 +86,7 @@
     transform: translateY(0);
     opacity: 1;
   }
+
   100% {
     transform: translateY(10px);
     opacity: 0;
@@ -75,9 +98,12 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }

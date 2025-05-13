@@ -57,7 +57,7 @@ const CartPage: React.FC = () => {
                     <div className="flex-1">
                       <h3 className="text-lg font-medium text-gray-900 dark:text-white">{item.name}</h3>
                       <p className="text-gray-500 dark:text-gray-400 mb-1">Size: {item.size}</p>
-                      <p className="text-[#00D2C3] font-medium">${item.price.toFixed(2)}</p>
+                      <p className="text-[#00D2C3] font-medium">₹{item.price.toFixed(2)}</p>
 
                       <div className="flex items-center gap-4 mt-2">
                         <div className="flex items-center gap-2">
@@ -89,7 +89,7 @@ const CartPage: React.FC = () => {
                     <div className="text-right">
                       <p className="text-sm text-gray-500 dark:text-gray-400">Subtotal</p>
                       <p className="text-lg font-medium text-gray-900 dark:text-white">
-                        ${(item.price * item.quantity).toFixed(2)}
+                        ₹{(item.price * item.quantity).toFixed(2)}
                       </p>
                     </div>
                   </div>
@@ -105,7 +105,7 @@ const CartPage: React.FC = () => {
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between text-gray-600 dark:text-gray-400">
                   <span>Subtotal</span>
-                  <span>${totalPrice.toFixed(2)}</span>
+                  <span>₹{totalPrice.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-gray-600 dark:text-gray-400">
                   <span>Shipping</span>
@@ -113,18 +113,18 @@ const CartPage: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-gray-600 dark:text-gray-400">
                   <span>Tax</span>
-                  <span>${(totalPrice * 0.08).toFixed(2)}</span>
+                  <span>₹{(totalPrice * 0.08).toFixed(2)}</span>
                 </div>
               </div>
 
               <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mb-6">
                 <div className="flex justify-between text-lg font-medium text-gray-900 dark:text-white">
                   <span>Total</span>
-                  <span>${(totalPrice + (totalPrice * 0.08)).toFixed(2)}</span>
+                  <span>₹{(totalPrice + (totalPrice * 0.08)).toFixed(2)}</span>
                 </div>
               </div>
 
-              <button 
+              <button
                 onClick={openCheckoutFlow}
                 className="w-full py-3 bg-gradient-to-r from-[#FF2E93] to-[#00D2C3] text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
               >

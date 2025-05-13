@@ -22,7 +22,7 @@ const ShopPage: React.FC = () => {
   const [priceRange, setPriceRange] = useState([0, 100]);
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
   const [selectedColors, setSelectedColors] = useState<string[]>([]);
-  
+
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true
@@ -35,16 +35,16 @@ const ShopPage: React.FC = () => {
   }, []);
 
   const toggleSize = (size: string) => {
-    setSelectedSizes(prev => 
-      prev.includes(size) 
+    setSelectedSizes(prev =>
+      prev.includes(size)
         ? prev.filter(s => s !== size)
         : [...prev, size]
     );
   };
 
   const toggleColor = (color: string) => {
-    setSelectedColors(prev => 
-      prev.includes(color) 
+    setSelectedColors(prev =>
+      prev.includes(color)
         ? prev.filter(c => c !== color)
         : [...prev, color]
     );
@@ -53,11 +53,11 @@ const ShopPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-black">
       <Navbar />
-      
+
       {/* Hero Banner */}
       <div className="bg-gradient-to-r from-[#00f0f0] to-[#ff2d95] py-20 px-4 mt-16">
         <div className="max-w-7xl mx-auto text-center">
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-6xl font-bold text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ const ShopPage: React.FC = () => {
           >
             The Drip Shop 💧
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-white/90 text-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -79,7 +79,7 @@ const ShopPage: React.FC = () => {
       {/* Promo Banner */}
       <AnimatePresence>
         {showPromo && (
-          <motion.div 
+          <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -88,7 +88,7 @@ const ShopPage: React.FC = () => {
             <p className="font-medium">
               💥 QUIRKLO DROP ALERT! Use code <span className="font-bold">STAYQUIRKY</span> for 10% OFF today only
             </p>
-            <button 
+            <button
               onClick={() => setShowPromo(false)}
               className="absolute right-4 top-1/2 -translate-y-1/2 hover:opacity-70 transition-opacity"
             >
@@ -97,13 +97,13 @@ const ShopPage: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       <div className="max-w-7xl mx-auto px-4 py-8 flex gap-8">
         {/* Filters Sidebar */}
         <div className="hidden md:block w-64 flex-shrink-0">
           <div className="sticky top-32">
             <h2 className="text-white font-bold text-xl mb-6">Filters</h2>
-            
+
             {/* Categories */}
             <div className="mb-8">
               <h3 className="text-white font-medium mb-3">Categories</h3>
@@ -112,18 +112,17 @@ const ShopPage: React.FC = () => {
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      selectedCategory === category
-                        ? 'bg-white text-black'
-                        : 'text-white hover:bg-white/10'
-                    }`}
+                    className={`w-full text-left px-4 py-2 rounded-lg text-sm font-medium transition-colors ${selectedCategory === category
+                      ? 'bg-white text-black'
+                      : 'text-white hover:bg-white/10'
+                      }`}
                   >
                     {category}
                   </button>
                 ))}
               </div>
             </div>
-            
+
             {/* Sizes */}
             <div className="mb-8">
               <h3 className="text-white font-medium mb-3">Sizes</h3>
@@ -132,18 +131,17 @@ const ShopPage: React.FC = () => {
                   <button
                     key={size}
                     onClick={() => toggleSize(size)}
-                    className={`py-2 rounded-lg text-sm font-medium transition-colors ${
-                      selectedSizes.includes(size)
-                        ? 'bg-white text-black'
-                        : 'text-white border border-gray-700 hover:border-white'
-                    }`}
+                    className={`py-2 rounded-lg text-sm font-medium transition-colors ${selectedSizes.includes(size)
+                      ? 'bg-white text-black'
+                      : 'text-white border border-gray-700 hover:border-white'
+                      }`}
                   >
                     {size}
                   </button>
                 ))}
               </div>
             </div>
-            
+
             {/* Colors */}
             <div className="mb-8">
               <h3 className="text-white font-medium mb-3">Colors</h3>
@@ -152,18 +150,17 @@ const ShopPage: React.FC = () => {
                   <button
                     key={color}
                     onClick={() => toggleColor(color)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                      selectedColors.includes(color)
-                        ? 'bg-white text-black'
-                        : 'text-white border border-gray-700 hover:border-white'
-                    }`}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedColors.includes(color)
+                      ? 'bg-white text-black'
+                      : 'text-white border border-gray-700 hover:border-white'
+                      }`}
                   >
                     {color}
                   </button>
                 ))}
               </div>
             </div>
-            
+
             {/* Price Range */}
             <div className="mb-8">
               <h3 className="text-white font-medium mb-3">Price Range</h3>
@@ -182,7 +179,7 @@ const ShopPage: React.FC = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Main Content */}
         <div className="flex-1">
           {/* Mobile Filters Button */}
@@ -195,7 +192,7 @@ const ShopPage: React.FC = () => {
               <span>Show Filters</span>
             </button>
           </div>
-          
+
           {/* Sort Options */}
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-white font-bold text-xl">
@@ -215,7 +212,7 @@ const ShopPage: React.FC = () => {
               </select>
             </div>
           </div>
-          
+
           {/* Products Grid */}
           <div ref={ref}>
             <motion.div
@@ -226,7 +223,7 @@ const ShopPage: React.FC = () => {
               <ProductGrid />
             </motion.div>
           </div>
-          
+
           {/* Load More */}
           <div className="text-center mt-12">
             <button className="px-8 py-4 bg-gradient-to-r from-[#00f0f0] to-[#ff2d95] text-white rounded-full font-bold hover:scale-105 transition-transform">
@@ -235,7 +232,7 @@ const ShopPage: React.FC = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile Filters Modal */}
       <AnimatePresence>
         {isFilterOpen && (
@@ -253,17 +250,17 @@ const ShopPage: React.FC = () => {
             >
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-white font-bold text-xl">Filters</h3>
-                <button 
+                <button
                   onClick={() => setIsFilterOpen(false)}
                   className="text-white hover:opacity-70 transition-opacity"
                 >
                   <X size={24} />
                 </button>
               </div>
-              
+
               {/* Mobile filters content - same as sidebar */}
               {/* ... Copy the filters content from sidebar here ... */}
-              
+
               <button
                 onClick={() => setIsFilterOpen(false)}
                 className="w-full py-3 bg-white text-black rounded-lg font-bold mt-6"
@@ -274,7 +271,7 @@ const ShopPage: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       {/* Floating Cart (Mobile) */}
       <div className="fixed bottom-4 right-4 md:hidden">
         <button className="w-12 h-12 bg-[#FF2E93] rounded-full flex items-center justify-center text-white shadow-lg hover:scale-105 transition-transform">
