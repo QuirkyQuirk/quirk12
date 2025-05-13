@@ -24,6 +24,24 @@ export default {
           turquoise: '#00D2C3',
           pink: '#FF2E93',
         },
+        dark: {
+          bg: '#121212',
+          card: '#1E1E1E',
+          border: '#2E2E2E',
+          text: {
+            primary: '#FFFFFF',
+            secondary: '#A0A0A0',
+          },
+        },
+        light: {
+          bg: '#FFFFFF',
+          card: '#F5F5F5',
+          border: '#E5E5E5',
+          text: {
+            primary: '#1A1A1A',
+            secondary: '#666666',
+          },
+        },
       },
     },
   },
